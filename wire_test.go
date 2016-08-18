@@ -85,7 +85,7 @@ func TestEncodeBase64(t *testing.T) {
 
 func TestEncodeJSON(t *testing.T) {
 	lg := ParseSingle(wireTopicJSONForTest())
-	if lg.EncodeJSON() != `type:json|created:1468640833|content:{"foo": "bar", "awesome": 9001}` {
+	if lg.EncodeJSON() != `topic:awesome|type:json|created:1468640833|content:{"foo": "bar", "awesome": 9001}` {
 		t.Errorf("Failed to encode correctly: %v", lg.EncodeJSON())
 	}
 }

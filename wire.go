@@ -110,14 +110,32 @@ func (l Wire) JSONStringContent() string {
 
 // EncodePlain builds the wire protocol for plaintext type.
 func (l Wire) EncodePlain() string {
-	return fmt.Sprintf("type:plain|created:%v|content:%v", l.Created, l.PlainContent())
+	basic := fmt.Sprintf("type:plain|created:%v|content:%v", l.Created, l.PlainContent())
+
+	if l.Topic != "" {
+		return fmt.Sprintf("topic:%v|%v", l.Topic, basic)
+	}
+
+	return basic
 }
 
 // EncodePlain builds the wire protocol for base64 type.
 func (l Wire) EncodeBase64() string {
-	return fmt.Sprintf("type:base64|created:%v|content:%v", l.Created, l.Base64Content())
+	basic := fmt.Sprintf("type:base64|created:%v|content:%v", l.Created, l.Base64Content())
+
+	if l.Topic != "" {
+		return fmt.Sprintf("topic:%v|%v", l.Topic, basic)
+	}
+
+	return basic
 }
 
 func (l Wire) EncodeJSON() string {
-	return fmt.Sprintf("type:json|created:%v|content:%v", l.Created, l.JSONStringContent())
+	basic := fmt.Sprintf("type:json|created:%v|content:%v", l.Created, l.JSONStringContent())
+
+	if l.Topic != "" {
+		return fmt.Sprintf("topic:%v|%v", l.Topic, basic)
+	}
+
+	return basic
 }
