@@ -17,7 +17,7 @@ import (
 	"strings"
 )
 
-// Parse multiple lines of ResourceD TCP log line wire protocol.
+// Parse multiple lines of ResourceD TCP wire protocol.
 func Parse(stringLoglines string) []Wire {
 	loglines := strings.Split(stringLoglines, "\n")
 	result := make([]Wire, len(loglines))
@@ -29,7 +29,7 @@ func Parse(stringLoglines string) []Wire {
 	return result
 }
 
-// ParseSingle parses a single line of ResourceD TCP log line wire protocol.
+// ParseSingle parses a single line of ResourceD TCP wire protocol.
 func ParseSingle(logline string) Wire {
 	l := Wire{}
 
